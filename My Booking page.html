@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>ZEVO Riyadh - My Bookings</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#061E29",
+            secondary: "#1D546D",
+            tertiary: "#5F9598",
+            "uber-black": "#061E29",
+            "uber-charcoal": "#061E29",
+            "uber-grey-light": "#EAF2F2",
+            "uber-grey-text": "#52717B",
+            surface: "#F5FAFA"
+          },
+          fontFamily: {
+            display: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    .bookings-page {
+      background:
+        radial-gradient(circle at top left, rgba(95,149,152,0.16), transparent 24%),
+        radial-gradient(circle at top right, rgba(29,84,109,0.08), transparent 22%),
+        linear-gradient(180deg, #f6fbfb 0%, #ffffff 30%);
+    }
+
+    .surface-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(246,250,250,0.98) 100%);
+      border: 1px solid rgba(29, 84, 109, 0.1);
+      box-shadow: 0 22px 50px rgba(6, 30, 41, 0.08);
+    }
+
+    .booking-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,249,249,0.96) 100%);
+      border: 1px solid rgba(29, 84, 109, 0.1);
+      box-shadow: 0 18px 40px rgba(6, 30, 41, 0.06);
+    }
+  </style>
+</head>
+
+<body class="bookings-page min-h-screen bg-white text-uber-charcoal font-display">
+  <div class="flex min-h-screen flex-col">
+    <header class="sticky top-0 z-50 border-b border-secondary/10 bg-white/90 px-6 py-6 backdrop-blur-md md:px-20">
+      <div class="mx-auto flex w-full max-w-7xl items-center justify-between gap-8">
+        <div class="flex items-center gap-8">
+          <a class="flex items-center gap-2 text-uber-charcoal" href="#">
+            <div class="flex size-8 items-center justify-center rounded-sm bg-uber-black text-white">
+              <span class="material-symbols-outlined !text-xl">directions_car</span>
+            </div>
+            <span class="text-xl font-extrabold tracking-tighter">ZEVO</span>
+          </a>
+          <nav class="hidden h-10 items-center gap-8 lg:flex">
+            <a class="flex h-full items-center text-sm font-medium text-uber-charcoal/80 transition-colors hover:text-uber-black"
+              href="#">Dashboard</a>
+            <a class="flex h-full items-center text-sm font-medium text-uber-charcoal/80 transition-colors hover:text-uber-black"
+              href="#">Browse Cars</a>
+            <a class="flex h-full items-center border-b-2 border-uber-black text-sm font-bold text-uber-black"
+              href="#">My Bookings</a>
+            <a class="flex h-full items-center text-sm font-medium text-uber-charcoal/80 transition-colors hover:text-uber-black"
+              href="#">Payments</a>
+            <a class="flex h-full items-center text-sm font-medium text-uber-charcoal/80 transition-colors hover:text-uber-black"
+              href="#">Support</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="hidden flex-col items-end sm:flex">
+            <span class="text-sm font-bold leading-none text-uber-charcoal">Ahmed Khalid</span>
+            <span class="mt-1 text-[10px] font-bold uppercase tracking-wider text-uber-charcoal/60">Pro Driver</span>
+          </div>
+          <button
+            class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-uber-charcoal/20 shadow-sm shadow-uber-charcoal/5">
+            <img alt="User Avatar" class="h-full w-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWmpmKhEXIFbdEIQsbX_S7NFBXbmq9uO22VVQ-ykhFwaJE2niANEqVNpmwXLoYjKf7W6mrJI6R7ftm8pUnUgBZAvetzsuFcuPJQzaFqg97PxxHEwnTgsLrzFvJ9dt2tStswpZ_1lh1yRMVF9YDB9QNio9mFiRN7AX5SFBcQU6AE_V1UpO6KRDRPIcpvGJJpz4W5apnHoJARQ9iz7_d2sLOQdXfopC9miC-F2L2iH0DwZRj-LDKNSW-WhDXfL7VvzWtF8noqwtpA18" />
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <div class="border-b border-secondary/10 px-6 py-6 md:px-20">
+        <div class="mx-auto flex w-full max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-secondary/70">Booking center</p>
+            <h1 class="text-2xl font-bold tracking-tight text-uber-charcoal md:text-3xl">My Bookings</h1>
+            <p class="mt-2 text-sm font-medium text-uber-grey-text">Track active requests, confirmed pickups, and
+              completed rentals.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="rounded-full bg-uber-black px-4 py-2.5 text-sm font-bold text-white">Active &amp;
+              Pending</button>
+            <button
+              class="rounded-full border border-secondary/15 bg-white px-4 py-2.5 text-sm font-bold text-uber-charcoal hover:bg-uber-grey-light transition-colors">Past
+              Rentals</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 py-8 md:px-20">
+        <div class="mx-auto grid w-full max-w-7xl gap-5">
+          <article class="booking-card rounded-[1.5rem] p-6 lg:p-8 flex flex-col gap-6">
+            <!-- Header -->
+            <div
+              class="flex flex-col justify-between gap-4 border-b border-secondary/10 pb-5 sm:flex-row sm:items-start">
+              <div>
+                <div class="mb-2 flex items-center gap-3">
+                  <h2 class="text-2xl font-bold tracking-tight text-uber-charcoal">Toyota Yaris 2024</h2>
+                  <span
+                    class="inline-flex items-center rounded-full bg-secondary/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Approved</span>
+                </div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-uber-grey-text">Booking #24819 •
+                  Morning shift - Olaya branch</p>
+              </div>
+              <div class="sm:text-right">
+                <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-uber-charcoal/45">Estimated total</p>
+                <p class="text-xl font-extrabold text-secondary">145 SAR</p>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="flex flex-col gap-6">
+              <!-- Status Box -->
+              <div class="rounded-2xl bg-surface border border-secondary/10 p-4 sm:p-5">
+                <p class="mb-1.5 flex items-center gap-1.5 text-sm font-bold text-secondary">
+                  <span class="material-symbols-outlined !text-[18px]">check_circle</span>
+                  Pickup is ready
+                </p>
+                <p class="text-xs font-medium leading-relaxed text-uber-grey-text">
+                  Morning shift confirmed for today. Your documents are verified. Arrive between 05:40 AM and 06:00 AM
+                  for the fastest handoff.
+                </p>
+              </div>
+
+              <!-- Grid Details -->
+              <div class="grid flex-1 grid-cols-2 gap-y-6 sm:grid-cols-3">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Pickup</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Today, 06:00 AM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Olaya Branch, Riyadh</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Drop-off</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Today, 02:00 PM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Same branch return</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Return by</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">02:30 PM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">30 min grace window</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+              class="flex flex-col justify-between gap-4 border-t border-secondary/10 pt-5 sm:flex-row sm:items-center">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">Commercial
+                  insurance</span>
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">WhatsApp
+                  support</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 lg:ml-auto">
+                <button
+                  class="rounded-xl px-4 py-2.5 text-xs font-bold text-rose-600 transition-colors hover:bg-rose-50">Cancel</button>
+                <button
+                  class="rounded-xl border border-secondary/20 px-4 py-2.5 text-xs font-bold text-secondary transition-colors hover:bg-secondary/5">View
+                  details</button>
+                <button
+                  class="flex items-center gap-1.5 rounded-xl bg-uber-black px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-secondary">
+                  WhatsApp
+                  <span class="material-symbols-outlined !text-[14px]">open_in_new</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="booking-card rounded-[1.5rem] p-6 lg:p-8 flex flex-col gap-6">
+            <!-- Header -->
+            <div
+              class="flex flex-col justify-between gap-4 border-b border-secondary/10 pb-5 sm:flex-row sm:items-start">
+              <div>
+                <div class="mb-2 flex items-center gap-3">
+                  <h2 class="text-2xl font-bold tracking-tight text-uber-charcoal">Hyundai Elantra 2024</h2>
+                  <span
+                    class="inline-flex items-center rounded-full bg-tertiary/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Pending</span>
+                </div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-uber-grey-text">Booking #24852 •
+                  Tomorrow - Evening shift</p>
+              </div>
+              <div class="sm:text-right">
+                <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-uber-charcoal/45">Estimated total</p>
+                <p class="text-xl font-extrabold text-secondary">210 SAR</p>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="flex flex-col gap-6">
+              <!-- Status Box -->
+              <div class="rounded-2xl bg-surface border border-secondary/10 p-4 sm:p-5">
+                <p class="mb-1.5 flex items-center gap-1.5 text-sm font-bold text-uber-charcoal">
+                  <span class="material-symbols-outlined !text-[18px]">pending_actions</span>
+                  Awaiting review
+                </p>
+                <p class="text-xs font-medium leading-relaxed text-uber-grey-text">
+                  Your request is queued. ZEVO will confirm branch availability and call you before the shift starts.
+                  You will only pay after approval.
+                </p>
+              </div>
+
+              <!-- Grid Details -->
+              <div class="grid flex-1 grid-cols-2 gap-y-6 sm:grid-cols-3">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Pickup</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Tomorrow, 02:00 PM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Riyadh city pickup</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Drop-off</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Tomorrow, 10:00 PM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Same-day handoff</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Approval</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Within 24 hours</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Manual review queue</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+              class="flex flex-col justify-between gap-4 border-t border-secondary/10 pt-5 sm:flex-row sm:items-center">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">High
+                  comfort sedan</span>
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">No
+                  payment yet</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 lg:ml-auto">
+                <button
+                  class="rounded-xl px-4 py-2.5 text-xs font-bold text-rose-600 transition-colors hover:bg-rose-50">Cancel</button>
+                <button
+                  class="rounded-xl border border-secondary/20 px-4 py-2.5 text-xs font-bold text-uber-charcoal transition-colors hover:bg-secondary/5">Edit
+                  request</button>
+                <button
+                  class="rounded-xl bg-secondary px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-uber-black">Track
+                  request</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="booking-card rounded-[1.5rem] p-6 lg:p-8 flex flex-col gap-6">
+            <!-- Header -->
+            <div
+              class="flex flex-col justify-between gap-4 border-b border-secondary/10 pb-5 sm:flex-row sm:items-start">
+              <div>
+                <div class="mb-2 flex items-center gap-3">
+                  <h2 class="text-2xl font-bold tracking-tight text-uber-charcoal">Kia Pegas 2023</h2>
+                  <span
+                    class="inline-flex items-center rounded-full bg-uber-grey-light px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal">Completed</span>
+                </div>
+                <p class="text-xs font-semibold uppercase tracking-[0.18em] text-uber-grey-text">Booking #24790 • Last
+                  Thu - Morning shift</p>
+              </div>
+              <div class="sm:text-right">
+                <p class="text-[10px] font-bold uppercase tracking-[0.22em] text-uber-charcoal/45">Final total</p>
+                <p class="text-xl font-extrabold text-uber-charcoal">165 SAR</p>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="flex flex-col gap-6">
+              <!-- Status Box -->
+              <div class="rounded-2xl bg-surface border border-secondary/10 p-4 sm:p-5">
+                <p class="mb-1.5 flex items-center gap-1.5 text-sm font-bold text-uber-charcoal">
+                  <span class="material-symbols-outlined !text-[18px]">task_alt</span>
+                  Return completed
+                </p>
+                <p class="text-xs font-medium leading-relaxed text-uber-grey-text">
+                  Past rental completed successfully. Vehicle inspection closed with no issues and your receipt is
+                  ready.
+                </p>
+              </div>
+
+              <!-- Grid Details -->
+              <div class="grid flex-1 grid-cols-2 gap-y-6 sm:grid-cols-3">
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Pickup</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Thu, 06:00 AM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">City branch handoff</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Drop-off</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">Thu, 02:00 PM</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">Returned on schedule</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/45">Charges</p>
+                  <p class="mt-1.5 text-sm font-bold text-uber-charcoal">0 SAR extra</p>
+                  <p class="mt-0.5 text-[11px] font-medium text-uber-grey-text">No damages/late fees</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div
+              class="flex flex-col justify-between gap-4 border-t border-secondary/10 pt-5 sm:flex-row sm:items-center">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">Returned
+                  on time</span>
+                <span
+                  class="rounded-lg bg-uber-grey-light/50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-uber-grey-text">No
+                  extra fees</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 lg:ml-auto">
+                <button
+                  class="rounded-xl border border-secondary/20 px-4 py-2.5 text-xs font-bold text-uber-charcoal transition-colors hover:bg-secondary/5">View
+                  receipt</button>
+                <button
+                  class="rounded-xl bg-uber-black px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-secondary">Book
+                  similar car</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-uber-charcoal/10 bg-white px-6 py-12 md:px-20">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
+        <div class="flex items-center gap-2 text-uber-charcoal">
+          <div class="flex size-8 items-center justify-center rounded-sm bg-uber-black text-white">
+            <span class="material-symbols-outlined text-sm">directions_car</span>
+          </div>
+          <span class="text-xl font-extrabold tracking-tighter">ZEVO</span>
+        </div>
+        <div
+          class="flex flex-wrap justify-center gap-6 text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/40 md:gap-10">
+          <a class="transition-colors hover:text-uber-black" href="#">Privacy Policy</a>
+          <a class="transition-colors hover:text-uber-black" href="#">Terms of Service</a>
+          <a class="transition-colors hover:text-uber-black" href="#">Help Center</a>
+          <a class="transition-colors hover:text-uber-black" href="#">Contact</a>
+        </div>
+        <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-uber-charcoal/40">
+          © 2024 ZEVO Inc.
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

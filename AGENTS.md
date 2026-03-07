@@ -1,0 +1,1 @@
+/Users/ahmed/.AGENTS/frontend/AGENTS.md

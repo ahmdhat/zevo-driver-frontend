@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZEVO Riyadh - Booking Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#061E29",
+                        "secondary": "#1D546D",
+                        "tertiary": "#5F9598",
+                        "uber-black": "#061E29",
+                        "uber-charcoal": "#061E29",
+                        "uber-grey-light": "#EAF2F2",
+                        "uber-grey-text": "#52717B",
+                        "surface": "#F5FAFA",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "2xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-section {
+            background:
+                radial-gradient(circle at top left, rgba(95,149,152,0.18), transparent 32%),
+                radial-gradient(circle at top right, rgba(29,84,109,0.12), transparent 28%),
+                linear-gradient(180deg, #f6fbfb 0%, #ffffff 62%);
+        }
+        .hero-card-shell {
+            background: #ffffff;
+            border: 1px solid rgba(29, 84, 109, 0.1);
+            box-shadow: 0 24px 55px rgba(6, 30, 41, 0.1);
+        }
+        .popular-section {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(95,149,152,0.12), transparent 24%),
+                linear-gradient(180deg, #ffffff 0%, #f4f9f9 100%);
+        }
+        .popular-car-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,249,249,0.96) 100%);
+            box-shadow: 0 24px 45px rgba(6, 30, 41, 0.08);
+        }
+        .popular-media {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(29,84,109,0.12), rgba(95,149,152,0.18) 52%, rgba(255,255,255,0.95) 100%);
+        }
+        .popular-media::before {
+            content: "";
+            position: absolute;
+            inset: 1rem auto auto 1rem;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(6, 30, 41, 0.08);
+            background: rgba(255,255,255,0.4);
+        }
+        .popular-media::after {
+            content: "";
+            position: absolute;
+            inset: auto -1rem -1rem auto;
+            width: 10rem;
+            height: 10rem;
+            border-radius: 2rem;
+            background:
+                repeating-linear-gradient(135deg, rgba(6,30,41,0.08) 0 2px, transparent 2px 14px),
+                rgba(255,255,255,0.28);
+        }
+        .feature-section {
+            background:
+                radial-gradient(circle at top center, rgba(95,149,152,0.28), transparent 28%),
+                linear-gradient(180deg, #0a2531 0%, #061e29 100%);
+        }
+        .feature-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.06) 100%);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+        }
+        .feature-art {
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06)),
+                linear-gradient(135deg, rgba(95,149,152,0.28), rgba(29,84,109,0.16));
+        }
+    </style>
+</head>
+<body class="bg-white text-uber-charcoal min-h-screen font-display">
+<div class="layout-container flex h-full grow flex-col">
+<header class="absolute top-0 left-0 right-0 z-50 flex items-center justify-center px-6 md:px-20 py-6">
+<div class="max-w-7xl w-full flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-uber-charcoal">
+<div class="size-8 flex items-center justify-center bg-uber-black text-white rounded-sm">
+<span class="material-symbols-outlined !text-xl">directions_car</span>
+</div>
+<span class="text-xl font-extrabold tracking-tighter">ZEVO</span>
+</div>
+<nav class="hidden lg:flex items-center gap-8 h-10">
+<a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full" href="#">Dashboard</a>
+<a class="text-uber-black text-sm font-bold flex items-center h-full border-b-2 border-uber-black" href="#">Browse Cars</a>
+<a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full" href="#">Payments</a>
+<a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="flex flex-col items-end hidden sm:flex">
+<span class="text-sm font-bold text-uber-charcoal leading-none">Ahmed Khalid</span>
+<span class="text-[10px] text-uber-charcoal/60 uppercase font-bold tracking-wider mt-1">Pro Driver</span>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-full h-9 w-9 border border-uber-charcoal/20 shadow-sm shadow-uber-charcoal/5">
+<img alt="User Avatar" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWmpmKhEXIFbdEIQsbX_S7NFBXbmq9uO22VVQ-ykhFwaJE2niANEqVNpmwXLoYjKf7W6mrJI6R7ftm8pUnUgBZAvetzsuFcuPJQzaFqg97PxxHEwnTgsLrzFvJ9dt2tStswpZ_1lh1yRMVF9YDB9QNio9mFiRN7AX5SFBcQU6AE_V1UpO6KRDRPIcpvGJJpz4W5apnHoJARQ9iz7_d2sLOQdXfopC9miC-F2L2iH0DwZRj-LDKNSW-WhDXfL7VvzWtF8noqwtpA18"/>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="hero-section pt-32 pb-24 px-6 md:px-20 relative border-b border-secondary/10 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-16 relative z-10">
+<div class="flex flex-col gap-10 lg:w-3/5 pt-12">
+<div class="flex flex-col gap-6">
+<div class="inline-flex items-center px-4 py-1.5 rounded-full bg-uber-grey-light text-uber-charcoal text-xs font-bold uppercase tracking-widest w-fit border border-uber-charcoal/10">
+                            Built for Riyadh rideshare drivers
+                        </div>
+<h1 class="text-uber-charcoal text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+                            Rent a Car for Your <br/>
+<span class="text-uber-black">Next Shift</span>
+</h1>
+<p class="text-uber-grey-text text-lg md:text-xl font-medium max-w-xl">
+                            The professional platform for gig drivers in Saudi Arabia. 
+                            Simple booking, comprehensive insurance, and zero upfront costs.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-uber-charcoal/10 bg-white text-uber-charcoal text-sm">
+<span class="material-symbols-outlined text-sm text-uber-black">check_circle</span>
+                            Easy reservation
+                        </div>
+<div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-uber-charcoal/10 bg-white text-uber-charcoal text-sm">
+<span class="material-symbols-outlined text-sm text-uber-black">check_circle</span>
+                            Tailored for drivers
+                        </div>
+<div class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-uber-charcoal/10 bg-white text-uber-charcoal text-sm">
+<span class="material-symbols-outlined text-sm text-uber-black">check_circle</span>
+                            Flexible timing
+                        </div>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="flex h-14 items-center justify-center rounded-xl px-10 bg-uber-black text-white font-bold text-lg hover:bg-uber-charcoal transition-all shadow-xl shadow-uber-black/10">
+                            Explore Cars
+                        </button>
+<button class="flex h-14 items-center justify-center rounded-xl px-10 border border-secondary/20 text-uber-charcoal font-bold text-lg hover:bg-uber-grey-light transition-all">
+                            How it works
+                        </button>
+</div>
+</div>
+<div class="lg:w-2/5 w-full hero-card-shell">
+<div class="relative overflow-hidden rounded-[2rem] p-8 md:p-9">
+<div class="relative flex items-start justify-between gap-4 mb-6">
+<div>
+<h3 class="text-uber-charcoal text-[1.75rem] leading-tight font-bold">Need a car soon?</h3>
+<p class="text-sm text-uber-grey-text font-medium mt-2 max-w-sm">Pick a start day and shift to find the right car for your next run.</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3.5 px-4 rounded-xl bg-uber-black text-white text-sm font-bold shadow-lg shadow-uber-black/10">Today</button>
+<button class="py-3.5 px-4 rounded-xl bg-uber-grey-light text-uber-charcoal text-sm font-bold border border-secondary/10 hover:border-uber-black transition-colors">Tomorrow</button>
+</div>
+<button class="w-full py-3.5 px-4 rounded-xl bg-white text-uber-charcoal text-sm font-bold border border-secondary/10 hover:border-uber-black transition-colors text-left flex items-center justify-between">
+                                Custom Date
+                                <span class="material-symbols-outlined text-uber-charcoal/30">calendar_month</span>
+</button>
+<div class="bg-uber-grey-light/45 border border-secondary/10 p-6 rounded-[1.5rem] mt-6">
+<div class="flex items-center justify-between mb-4">
+<p class="text-[10px] font-bold text-uber-charcoal/40 uppercase tracking-widest">Select Your Shift</p>
+<span class="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary/60">Available today</span>
+</div>
+<div class="grid grid-cols-1 gap-3">
+<button class="group flex items-center justify-between p-4 rounded-2xl border-2 border-uber-black bg-white text-uber-charcoal transition-all text-left shadow-sm shadow-secondary/5">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-secondary/10 flex items-center justify-center text-uber-black">
+<span class="material-symbols-outlined">wb_sunny</span>
+</div>
+<div>
+<div class="font-extrabold text-sm">Morning</div>
+<div class="text-[10px] text-uber-grey-text font-bold uppercase tracking-tight">06:00 AM — 02:00 PM</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-uber-black text-2xl">check_circle</span>
+</button>
+<button class="group flex items-center justify-between p-4 rounded-2xl border border-secondary/10 bg-white text-uber-charcoal transition-all text-left hover:border-uber-black/50 hover:bg-uber-grey-light/30">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-secondary/10 flex items-center justify-center text-uber-charcoal/40 group-hover:text-uber-black transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div>
+<div class="font-bold text-sm">Evening</div>
+<div class="text-[10px] text-uber-grey-text font-bold uppercase tracking-tight">02:00 PM — 10:00 PM</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-uber-charcoal/20 group-hover:text-uber-black/50 transition-colors">radio_button_unchecked</span>
+</button>
+<button class="group flex items-center justify-between p-4 rounded-2xl border border-secondary/10 bg-white text-uber-charcoal transition-all text-left hover:border-uber-black/50 hover:bg-uber-grey-light/30">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-secondary/10 flex items-center justify-center text-uber-charcoal/40 group-hover:text-uber-black transition-colors">
+<span class="material-symbols-outlined">bedtime</span>
+</div>
+<div>
+<div class="font-bold text-sm">Night</div>
+<div class="text-[10px] text-uber-grey-text font-bold uppercase tracking-tight">10:00 PM — 06:00 AM</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-uber-charcoal/20 group-hover:text-uber-black/50 transition-colors">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+<button class="w-full h-14 flex items-center justify-center gap-2 rounded-xl bg-uber-black text-white text-base font-bold hover:bg-uber-charcoal transition-all mt-4 shadow-lg shadow-secondary/15">
+                                Explore Cars for Morning
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="popular-section py-24 px-6 md:px-20">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-extrabold text-uber-charcoal mb-2">Popular cars</h2>
+<p class="text-uber-grey-text text-base font-medium">Start with real options, then refine by timing only when needed.</p>
+</div>
+<button class="px-6 py-2.5 border border-secondary/15 bg-white rounded-xl text-sm font-bold text-uber-charcoal hover:bg-uber-grey-light transition-colors">View all cars</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<article class="popular-car-card group relative flex flex-col rounded-[2rem] border border-secondary/10 p-5 transition-all duration-300 hover:-translate-y-2">
+<div class="mb-5 flex items-center justify-between">
+<span class="rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Best for daily runs</span>
+<span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">Auto</span>
+</div>
+<div class="popular-media aspect-[16/11] rounded-[1.75rem] p-4">
+<img alt="Toyota Yaris 2024" class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i"/>
+</div>
+<div class="flex flex-1 flex-col gap-5 px-1 pt-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="text-xl font-bold text-uber-charcoal">Toyota Yaris 2024</h3>
+<p class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">Economy Sedan</p>
+</div>
+<span class="rounded-full bg-tertiary/15 px-3 py-1 text-xs font-bold text-secondary">Fuel Saver</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">4 seats</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">1.5L</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Airport ready</span>
+</div>
+<div class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">Starts from</p>
+<p class="mt-1 text-2xl font-extrabold text-uber-black">145 SAR<span class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span></p>
+</div>
+<button class="flex items-center gap-2 rounded-full bg-uber-black px-5 py-3 text-sm font-bold text-white transition-all hover:bg-secondary">
+View details
+<span class="material-symbols-outlined !text-lg">north_east</span>
+</button>
+</div>
+</div>
+</article>
+<article class="popular-car-card group relative flex flex-col rounded-[2rem] border border-secondary/10 p-5 transition-all duration-300 hover:-translate-y-2">
+<div class="mb-5 flex items-center justify-between">
+<span class="rounded-full bg-tertiary/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Top comfort pick</span>
+<span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">2024</span>
+</div>
+<div class="popular-media aspect-[16/11] rounded-[1.75rem] p-4">
+<img alt="Hyundai Elantra 2024" class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i"/>
+</div>
+<div class="flex flex-1 flex-col gap-5 px-1 pt-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="text-xl font-bold text-uber-charcoal">Hyundai Elantra 2024</h3>
+<p class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">Comfort Sedan</p>
+</div>
+<span class="rounded-full bg-secondary/10 px-3 py-1 text-xs font-bold text-secondary">Premium interior</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">5 seats</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Cruise control</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Long shift comfort</span>
+</div>
+<div class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">Starts from</p>
+<p class="mt-1 text-2xl font-extrabold text-uber-black">210 SAR<span class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span></p>
+</div>
+<button class="flex items-center gap-2 rounded-full border border-secondary/15 bg-white px-5 py-3 text-sm font-bold text-uber-charcoal transition-all hover:border-secondary hover:bg-secondary hover:text-white">
+View details
+<span class="material-symbols-outlined !text-lg">north_east</span>
+</button>
+</div>
+</div>
+</article>
+<article class="popular-car-card group relative flex flex-col rounded-[2rem] border border-secondary/10 p-5 transition-all duration-300 hover:-translate-y-2">
+<div class="mb-5 flex items-center justify-between">
+<span class="rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Easy city option</span>
+<span class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">Low deposit</span>
+</div>
+<div class="popular-media aspect-[16/11] rounded-[1.75rem] p-4">
+<img alt="Kia Pegas 2023" class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i"/>
+</div>
+<div class="flex flex-1 flex-col gap-5 px-1 pt-6">
+<div class="flex items-start justify-between gap-4">
+<div>
+<h3 class="text-xl font-bold text-uber-charcoal">Kia Pegas 2023</h3>
+<p class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">City Sedan</p>
+</div>
+<span class="rounded-full bg-tertiary/15 px-3 py-1 text-xs font-bold text-secondary">Quick approval</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Compact body</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Budget smart</span>
+<span class="rounded-full border border-secondary/10 bg-white px-3 py-1.5 text-xs font-semibold text-uber-grey-text">Ideal for downtown</span>
+</div>
+<div class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+<div>
+<p class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">Starts from</p>
+<p class="mt-1 text-2xl font-extrabold text-uber-black">165 SAR<span class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span></p>
+</div>
+<button class="flex items-center gap-2 rounded-full bg-uber-black px-5 py-3 text-sm font-bold text-white transition-all hover:bg-secondary">
+View details
+<span class="material-symbols-outlined !text-lg">north_east</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="feature-section py-24 px-6 md:px-20 relative overflow-hidden">
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-extrabold text-white mb-4">Why Choose ZEVO?</h2>
+<p class="text-white/65 text-lg font-medium">Optimized for drivers who mean business.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="feature-card backdrop-blur-xl p-6 rounded-[2rem] border border-white/10 hover:border-white/20 transition-all group">
+<div class="feature-art mb-8 overflow-hidden rounded-[1.5rem] border border-white/10 p-3">
+<img alt="Vintage vector style illustration of ZEVO insurance coverage" class="h-44 w-full rounded-[1.25rem] object-cover" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20220'%3E%3Crect%20width='320'%20height='220'%20rx='28'%20fill='%23EAF2F2'/%3E%3Cpath%20d='M54%20180h212'%20stroke='%23061E29'%20stroke-opacity='.2'%20stroke-width='2'/%3E%3Cpath%20d='M160%2026l68%2028v64c0%2034-23%2057-68%2072-45-15-68-38-68-72V54z'%20fill='none'%20stroke='%231D546D'%20stroke-width='6'/%3E%3Cpath%20d='M160%2050l45%2018v46c0%2020-14%2034-45%2045-31-11-45-25-45-45V68z'%20fill='%235F9598'%20fill-opacity='.28'/%3E%3Cpath%20d='M124%20118l23%2021%2048-54'%20fill='none'%20stroke='%23061E29'%20stroke-width='8'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M74%2062h28M218%2062h28M92%2042l16%2016M228%2042l-16%2016'%20stroke='%235F9598'%20stroke-width='4'%20stroke-linecap='round'/%3E%3C/svg%3E"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-3">Fully Insured</h3>
+<p class="text-white/55 text-base leading-relaxed">All rentals include commercial rideshare insurance as standard.</p>
+</div>
+<div class="feature-card backdrop-blur-xl p-6 rounded-[2rem] border border-white/10 hover:border-white/20 transition-all group">
+<div class="feature-art mb-8 overflow-hidden rounded-[1.5rem] border border-white/10 p-3">
+<img alt="Art deco revival illustration of a premium ZEVO fleet" class="h-44 w-full rounded-[1.25rem] object-cover" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20220'%3E%3Crect%20width='320'%20height='220'%20rx='28'%20fill='%23EAF2F2'/%3E%3Ccircle%20cx='160'%20cy='64'%20r='28'%20fill='%235F9598'%20fill-opacity='.25'/%3E%3Cpath%20d='M160%2026v22M130%2034l11%2019M190%2034l-11%2019M112%2058h22M186%2058h22'%20stroke='%231D546D'%20stroke-width='4'%20stroke-linecap='round'/%3E%3Cpath%20d='M74%20146l18-32c4-7%2012-12%2020-12h96c8%200%2016%205%2020%2012l18%2032v20H74z'%20fill='none'%20stroke='%23061E29'%20stroke-width='6'%20stroke-linejoin='round'/%3E%3Cpath%20d='M106%20114h108l16%2028H90z'%20fill='%235F9598'%20fill-opacity='.28'/%3E%3Ccircle%20cx='112'%20cy='166'%20r='16'%20fill='none'%20stroke='%231D546D'%20stroke-width='6'/%3E%3Ccircle%20cx='208'%20cy='166'%20r='16'%20fill='none'%20stroke='%231D546D'%20stroke-width='6'/%3E%3Cpath%20d='M96%20100l22-18h84l22%2018'%20fill='none'%20stroke='%231D546D'%20stroke-width='5'%20stroke-linecap='round'/%3E%3C/svg%3E"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-3">Premium Fleet</h3>
+<p class="text-white/55 text-base leading-relaxed">Modern, fuel-efficient, and clean vehicles that passengers love.</p>
+</div>
+<div class="feature-card backdrop-blur-xl p-6 rounded-[2rem] border border-white/10 hover:border-white/20 transition-all group">
+<div class="feature-art mb-8 overflow-hidden rounded-[1.5rem] border border-white/10 p-3">
+<img alt="Vintage vector illustration showing flexible ZEVO rental terms" class="h-44 w-full rounded-[1.25rem] object-cover" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20320%20220'%3E%3Crect%20width='320'%20height='220'%20rx='28'%20fill='%23EAF2F2'/%3E%3Cpath%20d='M98%20170c12-42%2036-63%2070-63s58%2021%2070%2063'%20fill='none'%20stroke='%231D546D'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Cpath%20d='M120%20172h80'%20stroke='%23061E29'%20stroke-width='6'%20stroke-linecap='round'/%3E%3Ccircle%20cx='160'%20cy='92'%20r='34'%20fill='none'%20stroke='%23061E29'%20stroke-width='6'/%3E%3Cpath%20d='M160%2070v24l14%2010'%20fill='none'%20stroke='%235F9598'%20stroke-width='7'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3Cpath%20d='M76%20134l18-18M244%20134l-18-18M92%2060l18%2010M228%2060l-18%2010'%20stroke='%235F9598'%20stroke-width='4'%20stroke-linecap='round'/%3E%3Cpath%20d='M88%20158h20M212%20158h20'%20stroke='%231D546D'%20stroke-width='5'%20stroke-linecap='round'/%3E%3C/svg%3E"/>
+</div>
+<h3 class="text-xl font-bold text-white mb-3">Flexible Terms</h3>
+<p class="text-white/55 text-base leading-relaxed">Rent by the day, week, or month. No long-term commitments required.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-uber-charcoal/10 px-6 md:px-20 py-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 text-uber-charcoal">
+<div class="size-8 flex items-center justify-center bg-uber-black rounded-sm text-white">
+<span class="material-symbols-outlined text-sm">directions_car</span>
+</div>
+<span class="font-extrabold text-xl tracking-tighter">ZEVO</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] font-bold text-uber-charcoal/40 uppercase tracking-[0.2em]">
+<a class="hover:text-uber-black transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-uber-black transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-uber-black transition-colors" href="#">Help Center</a>
+<a class="hover:text-uber-black transition-colors" href="#">Contact</a>
+</div>
+<div class="text-uber-charcoal/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+                © 2024 ZEVO Inc.
+            </div>
+</div>
+</footer>
+</div>
+
+</body></html>

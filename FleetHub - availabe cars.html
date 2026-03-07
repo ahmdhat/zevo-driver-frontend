@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ZEVO Riyadh - Available Cars</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#061E29",
+                        "secondary": "#1D546D",
+                        "tertiary": "#5F9598",
+                        "uber-black": "#061E29",
+                        "uber-charcoal": "#061E29",
+                        "uber-grey-light": "#EAF2F2",
+                        "uber-grey-text": "#52717B",
+                        "surface": "#F5FAFA"
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+            }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .results-page {
+            background:
+                radial-gradient(circle at top left, rgba(95,149,152,0.16), transparent 24%),
+                radial-gradient(circle at top right, rgba(29,84,109,0.08), transparent 22%),
+                linear-gradient(180deg, #f6fbfb 0%, #ffffff 30%);
+        }
+        .surface-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(246,250,250,0.98) 100%);
+            border: 1px solid rgba(29, 84, 109, 0.1);
+            box-shadow: 0 22px 50px rgba(6, 30, 41, 0.08);
+        }
+        .inventory-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,249,249,0.96) 100%);
+            box-shadow: 0 24px 45px rgba(6, 30, 41, 0.08);
+        }
+        .inventory-media {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(145deg, rgba(29,84,109,0.12), rgba(95,149,152,0.18) 52%, rgba(255,255,255,0.95) 100%);
+        }
+        .inventory-media::before {
+            content: "";
+            position: absolute;
+            inset: 1rem auto auto 1rem;
+            width: 4.75rem;
+            height: 4.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(6, 30, 41, 0.08);
+            background: rgba(255,255,255,0.36);
+        }
+        .inventory-media::after {
+            content: "";
+            position: absolute;
+            inset: auto -1rem -1rem auto;
+            width: 9rem;
+            height: 9rem;
+            border-radius: 2rem;
+            background:
+                repeating-linear-gradient(135deg, rgba(6,30,41,0.08) 0 2px, transparent 2px 14px),
+                rgba(255,255,255,0.24);
+        }
+    </style>
+</head>
+
+<body class="results-page min-h-screen bg-white text-uber-charcoal font-display">
+    <div class="flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 border-b border-secondary/10 bg-white/90 backdrop-blur-md px-6 md:px-20 py-6">
+            <div class="max-w-7xl mx-auto flex items-center justify-between gap-8">
+                <div class="flex items-center gap-8">
+                    <a class="flex items-center gap-2 text-uber-charcoal" href="#">
+                        <div class="size-8 flex items-center justify-center bg-uber-black text-white rounded-sm">
+                            <span class="material-symbols-outlined !text-xl">directions_car</span>
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tighter">ZEVO</span>
+                    </a>
+                    <nav class="hidden lg:flex items-center gap-8 h-10">
+                        <a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full"
+                            href="#">Dashboard</a>
+                        <a class="text-uber-black text-sm font-bold flex items-center h-full border-b-2 border-uber-black"
+                            href="#">Browse Cars</a>
+                        <a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full"
+                            href="#">Payments</a>
+                        <a class="text-uber-charcoal/80 hover:text-uber-black text-sm font-medium transition-colors flex items-center h-full"
+                            href="#">Support</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="hidden sm:flex flex-col items-end">
+                        <span class="text-sm font-bold text-uber-charcoal leading-none">Ahmed Khalid</span>
+                        <span class="text-[10px] text-uber-charcoal/60 uppercase font-bold tracking-wider mt-1">Pro
+                            Driver</span>
+                    </div>
+                    <button
+                        class="flex items-center justify-center overflow-hidden rounded-full h-9 w-9 border border-uber-charcoal/20 shadow-sm shadow-uber-charcoal/5">
+                        <img alt="User Avatar" class="h-full w-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRWmpmKhEXIFbdEIQsbX_S7NFBXbmq9uO22VVQ-ykhFwaJE2niANEqVNpmwXLoYjKf7W6mrJI6R7ftm8pUnUgBZAvetzsuFcuPJQzaFqg97PxxHEwnTgsLrzFvJ9dt2tStswpZ_1lh1yRMVF9YDB9QNio9mFiRN7AX5SFBcQU6AE_V1UpO6KRDRPIcpvGJJpz4W5apnHoJARQ9iz7_d2sLOQdXfopC9miC-F2L2iH0DwZRj-LDKNSW-WhDXfL7VvzWtF8noqwtpA18" />
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex-1">
+            <div class="border-b border-secondary/10 px-6 py-6 md:px-20">
+                <div
+                    class="mx-auto flex w-full max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                    <div class="flex flex-col gap-4">
+                        <a class="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:text-uber-black transition-colors w-fit"
+                            href="#">
+                            <span class="material-symbols-outlined !text-lg">arrow_back</span>
+                            Back to booking
+                        </a>
+                        <div>
+                            <p class="mb-2 text-[10px] font-bold uppercase tracking-[0.24em] text-secondary/70">
+                                Available vehicles</p>
+                            <h1 class="text-2xl font-bold tracking-tight text-uber-charcoal md:text-3xl">Cars ready for
+                                your next shift</h1>
+                            <p class="mt-2 text-sm font-medium text-uber-grey-text max-w-2xl">Refined options for Riyadh
+                                drivers, with flexible timing, commercial coverage, and fast approval windows.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 py-8 md:px-20">
+                <div class="mx-auto flex w-full max-w-7xl flex-col gap-8">
+
+                    <section class="flex flex-col gap-8">
+                        <div class="surface-card rounded-[2rem] p-5 md:p-6">
+                            <div class="flex flex-col gap-4">
+                                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                                    <div>
+                                        <h2 class="text-2xl font-bold text-uber-charcoal">Refine results</h2>
+                                        <p class="text-sm font-medium text-uber-grey-text mt-1">Select a day and shift.
+                                        </p>
+                                    </div>
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary w-fit">3
+                                        strong matches</span>
+                                </div>
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex flex-wrap items-center gap-3">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-[0.22em] text-uber-charcoal/45">Day</span>
+                                        <button
+                                            class="rounded-full bg-uber-black px-4 py-2.5 text-sm font-bold text-white">Today</button>
+                                        <button
+                                            class="rounded-full border border-secondary/15 bg-white px-4 py-2.5 text-sm font-bold text-uber-charcoal hover:bg-uber-grey-light transition-colors">Tomorrow</button>
+                                        <button
+                                            class="rounded-full border border-secondary/15 bg-white px-4 py-2.5 text-sm font-bold text-uber-charcoal hover:bg-uber-grey-light transition-colors">Custom
+                                            date</button>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-[0.22em] text-uber-charcoal/45">Shift</span>
+                                        <span
+                                            class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary/60">Morning
+                                            selected</span>
+                                    </div>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <button
+                                            class="group rounded-[1.5rem] border-2 border-uber-black bg-uber-grey-light/35 p-4 text-left">
+                                            <div
+                                                class="size-10 rounded-2xl bg-secondary/10 flex items-center justify-center text-uber-black mb-3">
+                                                <span class="material-symbols-outlined">wb_sunny</span>
+                                            </div>
+                                            <div class="text-sm font-extrabold text-uber-charcoal">Morning shift</div>
+                                            <div
+                                                class="mt-2 text-[11px] font-bold uppercase tracking-[0.14em] text-uber-grey-text">
+                                                06:00 AM - 02:00 PM</div>
+                                        </button>
+                                        <button
+                                            class="group rounded-[1.5rem] border border-secondary/10 bg-white p-4 text-left hover:border-secondary/30 hover:bg-uber-grey-light/25 transition-colors">
+                                            <div
+                                                class="size-10 rounded-2xl bg-secondary/10 flex items-center justify-center text-uber-black mb-3">
+                                                <span class="material-symbols-outlined">dark_mode</span>
+                                            </div>
+                                            <div class="text-sm font-bold text-uber-charcoal">Evening shift</div>
+                                            <div
+                                                class="mt-2 text-[11px] font-bold uppercase tracking-[0.14em] text-uber-grey-text">
+                                                02:00 PM - 10:00 PM</div>
+                                        </button>
+                                        <button
+                                            class="group rounded-[1.5rem] border border-secondary/10 bg-white p-4 text-left hover:border-secondary/30 hover:bg-uber-grey-light/25 transition-colors">
+                                            <div
+                                                class="size-10 rounded-2xl bg-secondary/10 flex items-center justify-center text-uber-black mb-3">
+                                                <span class="material-symbols-outlined">bedtime</span>
+                                            </div>
+                                            <div class="text-sm font-bold text-uber-charcoal">Night shift</div>
+                                            <div
+                                                class="mt-2 text-[11px] font-bold uppercase tracking-[0.14em] text-uber-grey-text">
+                                                10:00 PM - 06:00 AM</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-1 md:px-1">
+                            <div class="flex items-end justify-between gap-4">
+                                <div>
+                                    <h2 class="text-3xl font-extrabold text-uber-charcoal">Available cars</h2>
+                                    <p class="text-base font-medium text-uber-grey-text mt-1">3 curated matches for your
+                                        selected schedule.</p>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mt-6">
+                                <article
+                                    class="inventory-card group rounded-[2rem] border border-secondary/10 p-5 flex flex-col">
+                                    <div class="flex items-center justify-between mb-5">
+                                        <span
+                                            class="rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Best
+                                            match</span>
+                                        <span
+                                            class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">Ready
+                                            now</span>
+                                    </div>
+                                    <div class="inventory-media aspect-[16/11] rounded-[1.75rem] p-4">
+                                        <img alt="Toyota Yaris 2024"
+                                            class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i" />
+                                    </div>
+                                    <div class="flex flex-1 flex-col gap-5 pt-6">
+                                        <div class="flex items-start justify-between gap-4">
+                                            <div>
+                                                <h3 class="text-xl font-bold text-uber-charcoal">Toyota Yaris 2024</h3>
+                                                <p
+                                                    class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">
+                                                    Economy Sedan</p>
+                                            </div>
+                                            <span
+                                                class="rounded-full bg-tertiary/15 px-3 py-1 text-xs font-bold text-secondary">Fuel
+                                                Saver</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-uber-grey-text">Lowest running cost, fast
+                                            pickup, and the easiest entry point for a full-day shift.</p>
+                                        <div
+                                            class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+                                            <div>
+                                                <p
+                                                    class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">
+                                                    Estimated total</p>
+                                                <p class="mt-1 text-2xl font-extrabold text-uber-black">145 SAR<span
+                                                        class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span>
+                                                </p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-2 rounded-full bg-uber-black px-5 py-3 text-sm font-bold text-white transition-all hover:bg-secondary">
+                                                View details
+                                                <span class="material-symbols-outlined !text-lg">north_east</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article
+                                    class="inventory-card group rounded-[2rem] border border-secondary/10 p-5 flex flex-col">
+                                    <div class="flex items-center justify-between mb-5">
+                                        <span
+                                            class="rounded-full bg-tertiary/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">Comfort
+                                            pick</span>
+                                        <span
+                                            class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">High
+                                            demand</span>
+                                    </div>
+                                    <div class="inventory-media aspect-[16/11] rounded-[1.75rem] p-4">
+                                        <img alt="Hyundai Elantra 2024"
+                                            class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i" />
+                                    </div>
+                                    <div class="flex flex-1 flex-col gap-5 pt-6">
+                                        <div class="flex items-start justify-between gap-4">
+                                            <div>
+                                                <h3 class="text-xl font-bold text-uber-charcoal">Hyundai Elantra 2024
+                                                </h3>
+                                                <p
+                                                    class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">
+                                                    Comfort Sedan</p>
+                                            </div>
+                                            <span
+                                                class="rounded-full bg-secondary/10 px-3 py-1 text-xs font-bold text-secondary">Premium
+                                                interior</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-uber-grey-text">More cabin comfort for longer
+                                            sessions, with strong daily value for drivers who stay on the road.</p>
+                                        <div
+                                            class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+                                            <div>
+                                                <p
+                                                    class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">
+                                                    Estimated total</p>
+                                                <p class="mt-1 text-2xl font-extrabold text-uber-black">210 SAR<span
+                                                        class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span>
+                                                </p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-2 rounded-full border border-secondary/15 bg-white px-5 py-3 text-sm font-bold text-uber-charcoal transition-all hover:border-secondary hover:bg-secondary hover:text-white">
+                                                View details
+                                                <span class="material-symbols-outlined !text-lg">north_east</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+
+                                <article
+                                    class="inventory-card group rounded-[2rem] border border-secondary/10 p-5 flex flex-col">
+                                    <div class="flex items-center justify-between mb-5">
+                                        <span
+                                            class="rounded-full bg-secondary/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-secondary">City
+                                            smart</span>
+                                        <span
+                                            class="rounded-full bg-white px-3 py-1 text-xs font-bold text-uber-grey-text shadow-sm">Low
+                                            deposit</span>
+                                    </div>
+                                    <div class="inventory-media aspect-[16/11] rounded-[1.75rem] p-4">
+                                        <img alt="Kia Pegas 2023"
+                                            class="relative z-10 h-full w-full object-cover rounded-[1.5rem] scale-105 group-hover:scale-110 transition-transform duration-500"
+                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDedlaY0L32UpezFUAkAOg_8m3WhYnZf2-b0Bfnyxr_0SusdXIIlu4DGPN_au1VPp2cfWBxV5FKc7dAoCdqMtWBpZ6mwsHeqqf-fyqBAqCH9VuTzzPnv6KGayu7XKvr_O819z_WVF6CfwTrap_T3xTsKh-_QS_2wRuFM5Di78ChJM_WAByB5OnVB4iWDKU_W1BQFQrBoM9ZNqe6b49gKpGsy48Q0ssTFPydyJ1bb3ey-KfalTPNP35QvsI0clAzbFPyHp5TpkK2FK4i" />
+                                    </div>
+                                    <div class="flex flex-1 flex-col gap-5 pt-6">
+                                        <div class="flex items-start justify-between gap-4">
+                                            <div>
+                                                <h3 class="text-xl font-bold text-uber-charcoal">Kia Pegas 2023</h3>
+                                                <p
+                                                    class="mt-1 text-sm font-bold uppercase tracking-[0.18em] text-uber-charcoal/45">
+                                                    City Sedan</p>
+                                            </div>
+                                            <span
+                                                class="rounded-full bg-tertiary/15 px-3 py-1 text-xs font-bold text-secondary">Quick
+                                                approval</span>
+                                        </div>
+                                        <p class="text-sm font-medium text-uber-grey-text">A practical city option when
+                                            you want a lighter daily rate with quick approval.</p>
+                                        <div
+                                            class="mt-auto flex items-end justify-between border-t border-secondary/10 pt-5">
+                                            <div>
+                                                <p
+                                                    class="text-[10px] font-bold uppercase tracking-[0.24em] text-uber-charcoal/45">
+                                                    Estimated total</p>
+                                                <p class="mt-1 text-2xl font-extrabold text-uber-black">165 SAR<span
+                                                        class="ml-1 text-xs font-bold text-uber-charcoal/45">/day</span>
+                                                </p>
+                                            </div>
+                                            <button
+                                                class="flex items-center gap-2 rounded-full bg-uber-black px-5 py-3 text-sm font-bold text-white transition-all hover:bg-secondary">
+                                                View details
+                                                <span class="material-symbols-outlined !text-lg">north_east</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+        </main>
+        <footer class="bg-white border-t border-uber-charcoal/10 px-6 md:px-20 py-12">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2 text-uber-charcoal">
+                    <div class="size-8 flex items-center justify-center bg-uber-black rounded-sm text-white">
+                        <span class="material-symbols-outlined text-sm">directions_car</span>
+                    </div>
+                    <span class="font-extrabold text-xl tracking-tighter">ZEVO</span>
+                </div>
+                <div
+                    class="flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] font-bold text-uber-charcoal/40 uppercase tracking-[0.2em]">
+                    <a class="hover:text-uber-black transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-uber-black transition-colors" href="#">Terms of Service</a>
+                    <a class="hover:text-uber-black transition-colors" href="#">Help Center</a>
+                    <a class="hover:text-uber-black transition-colors" href="#">Contact</a>
+                </div>
+                <div class="text-uber-charcoal/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+                    © 2024 ZEVO Inc.
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
