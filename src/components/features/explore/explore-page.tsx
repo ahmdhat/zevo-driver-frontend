@@ -40,10 +40,10 @@ function PopularCarCard({
   return (
     <Card className="group overflow-hidden rounded-3xl p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       <div>
-        <MediaSlot aspectRatio="3/2" className="inventory-media">
+        <MediaSlot aspectRatio="4/2" className="inventory-media">
           {car.photo_path ? (
             <div
-              className="absolute inset-0 bg-center bg-no-repeat bg-contain transition-transform duration-500 group-hover:scale-105"
+              className="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-105"
               style={{ backgroundImage: `url(${car.photo_path})` }}
             />
           ) : (
@@ -55,7 +55,7 @@ function PopularCarCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-5 px-5 pb-5">
-        <div className="flex flex-col gap-3 sm:pt-5">
+        <div className="flex flex-col gap-3">
           <div className="flex items-center justify-between gap-4">
             <h3 className="line-clamp-1 text-2xl font-bold text-foreground">
               {car.make} {car.model}
@@ -67,7 +67,7 @@ function PopularCarCard({
             </div>
             <div className="flex items-center gap-1.5 rounded-md bg-secondary/10 px-2 py-1">
               <MapPin className="size-4" />
-              <span>{car.city || t('results.cityValue')}</span>
+              <span>{(car.city || t('results.cityValue')).split('').map((char, i) => i === 0 ? char.toLocaleUpperCase() : char).join('')}</span>
             </div>
           </div>
         </div>
