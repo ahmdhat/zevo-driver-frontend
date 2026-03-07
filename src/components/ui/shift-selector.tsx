@@ -13,6 +13,8 @@ export const SHIFTS: Record<ShiftType, { icon: typeof Sun; timeRange: string }> 
   night: { icon: MoonStar, timeRange: '10:00 PM – 6:00 AM' },
 };
 
+export type ShiftType = 'morning' | 'afternoon' | 'evening';
+
 export function ShiftSelector({
   value,
   onChange,
